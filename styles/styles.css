@@ -1,0 +1,570 @@
+/* Algemeen */
+* {
+    /* Zorgt ervoor dat de padding en border bij de breedte horen */
+    box-sizing: border-box;
+}
+
+html {
+    /* Scrollen in html element-gaat smooth */
+    @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth;
+    }
+
+    font-family: Arial, Helvetica, sans-serif
+}
+
+html:has(.is-open){
+    /* Zorgt ervoor dat je niet kan scrollen als het hamburger menu open is */
+    overflow: hidden;
+}
+
+header {
+    position:relative;
+    z-index: 10;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.4em;
+}
+
+p {
+    font-size: medium;
+    font-weight: 500;
+    margin: 0;
+}
+
+
+/* Navigatiebalk */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    background-color: #ffffff;
+    z-index: 10;
+
+    @media (min-width: 700px){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0;
+    }
+
+    .logo, .search {
+        @media (min-width: 700px) {
+            margin: 0.5em 2em;
+            width: 2.5em;
+        }
+    }
+
+    button {
+        background-color: white;
+        border: none;
+
+        svg {
+            width: 3em;
+        }
+
+        :hover {
+            cursor: pointer;
+            fill: #ffffff;
+            background-color: #009EA1;
+            padding: 0.2em;
+            border-radius: 3px;
+        }
+    }
+
+    /* Zorgt dat de knoppen rechts uitlijnen */
+    button:first-of-type{
+        margin-left: auto;
+
+        @media (min-width: 700px){
+            grid-row: 0/ 1;
+        }
+    }
+
+    /* Navigatie menu naar andere pagina's op de website */
+    .ham-menu {
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+
+        background-color:#009EA1;
+
+
+        margin:0;
+        padding:1.5em;
+        /* Lijst in hamburger menu is niet zichtbaar */
+        translate: 200%;
+        transition: 0.25s;
+
+        &.is-open {
+            /* Lijst in hamburger menu is zichtbaar */
+            translate: 0;
+        }
+
+        @media (min-width: 700px){
+            grid-column: 1/-1;
+            display: flex;
+            justify-content: space-evenly;
+            position: static;
+            translate: 0;
+            padding: 0.5em;
+        }
+
+        li, a{
+            list-style: none;
+            text-decoration: none;
+            color: white;
+            line-height: 1.7em;
+            font-size: large;
+
+            @media (min-width: 700px){
+                font-size: medium;
+            }
+        }
+
+        a {
+            &:hover {
+                text-decoration: 2px underline;
+                text-underline-offset: 5px;
+            }
+
+            &:active {
+                color: #7F0056;
+            }
+
+        }
+         
+
+        /* Drop-down menu */
+        .drop-down summary {
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: 2px underline;
+                text-underline-offset: 5px;
+
+            }
+
+            /* Driehoek voor tekst */
+            &::marker {
+                font-size: 1.3em;
+                padding: 0 5px;
+            }
+        }
+
+        /* Het drop-down menu als de 'voor Wie' open is */
+        .drop-down[open]::details-content{
+                padding-left: 1em;
+
+                @media (min-width: 700px){
+                    position: absolute;
+                    background-color: #009EA1;
+                    padding:1em;
+                    min-width: 22em;
+                }
+            }
+        
+        /* Alle a-elementen in het drop-down menu */
+        .drop-down a{
+            display: grid;
+            padding-left: 1em;
+        }
+    }
+
+    .ham-menu-button {
+        @media (min-width: 700px) {
+            display: none;
+        }
+    }
+    
+}
+
+
+/* Achtergrond wazig als ham-menu open is  */
+.blur {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(121, 121, 121, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+    transition: 0.25s;
+
+    &.is-open {
+        opacity: 1;
+        backdrop-filter: blur(3px);
+        pointer-events: all;
+    }
+}
+
+/* Opmaak foto boven in pagina */
+.top-picture {
+    display: flex;
+    width: 100%;
+    border-top: 25px solid #009EA1;
+    border-bottom: 5px solid #009EA1;
+
+    @media (min-width: 700px) {
+        margin: auto;
+        border: none;
+        width: 70%;
+    }
+}
+
+
+/* Welkom sectie op home-pagina */
+.welcome-home-page {
+    background-image: 
+    linear-gradient(rgba(17, 17, 17, 0.137)),
+    url("https://sieuwkesheta.github.io/all-human-accessible-website/assets/top-view-desk.jpg");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position:right;
+    background-size: cover;
+    
+    color: #ffffff;
+    padding: 1em;
+    text-align: center;
+
+    @media (min-width: 700px) {
+        border-top: 5px solid #009EA1;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 1em 0 0.2em;
+    }
+
+    h2 {
+        margin: 0;
+        padding: 2.5em 0 0.2em;
+    }
+
+    ul {
+        display: grid;
+        justify-content: center;
+        text-align: left;
+        padding: 1em;
+        line-height: 2em;
+        font-size: medium;
+        font-weight: 500;
+        margin: 0 0 0.3em;
+        padding: 0 0 1em;
+        list-style: none;
+    }
+
+    svg {
+        fill:#ffffff;
+        width: 1.5em;
+        margin-right: 0.5em;
+    }
+
+    /* 'Lees meer'-knop */
+    a {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #7F0056;
+        padding: 0.5em 1em;
+        border-radius: 50px;
+        border: 2px solid white;
+        box-shadow: 3px 2px 5px rgba(60, 60, 60, 0.592);
+
+        &:hover {
+            background-color: #009EA1;
+        }
+        &:active {
+            background-color: #005758;
+        }
+    }
+}
+
+
+/* Voor de doelgroepen op de website */
+.target-groups {
+    margin: 5em 1em;
+    padding: 1em;
+    background-color: #009EA1;
+    border-radius: 10px;
+
+    @media (min-width: 700px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 5em 4em
+        }
+
+    h2 {
+        margin: 0;
+        color: #ffffff;
+        margin-bottom: 0.5em;
+
+        @media (min-width:700px) {
+            grid-column: 1/-1;
+        }
+    }
+
+    p {
+        display: flex;
+        align-items:center;
+        gap: 0.5em;
+        background-color: #ffffff;
+        margin: 0;
+        padding: 0.5em;
+        border-bottom: 1px solid grey;
+
+        @media (min-width: 700px) {
+            border-left: 1px solid grey;
+        }
+
+    }
+    
+    svg {
+        width: 2.5em;
+    }
+}
+
+
+/* Laatste-nieuws sectie op home-pagina */
+.latest-news {
+    margin: 1.5em;
+
+    @media (min-width: 700px) {
+        margin: 4em;
+    }
+    
+    h2 {
+
+        svg {
+            height: 0.6em;
+
+            &:first-of-type {
+                height: 1em;
+            }
+        }
+
+        a {
+            color: black;
+
+            &:hover {
+                text-decoration-color:#7F0056;
+                padding: 0.4em;
+            }
+            &:active {
+                color: #7F0056;
+            }
+        }
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+
+        @media (min-width: 700px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1em;
+        }
+    }
+
+    article {
+        background-color:#009EA1;
+        margin-bottom: 2em;
+        padding-bottom: 1.5em;
+        text-align: center;
+        border-radius: 10px;
+
+        color: #ffffff;
+        fill: #ffffff;
+
+        @media (min-width: 700px) {
+            min-height: 21em;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        h3, p {
+            padding: 0 2em;
+        }
+
+        p {
+            padding-bottom: 2em;
+        }
+
+        /* 'Lees meer'-knoppen */
+        a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #7F0056;
+            padding: 0.5em 1em;
+            border-radius: 50px;
+            border: 2px solid white;
+            box-shadow: 3px 2px 5px rgba(60, 60, 60, 0.592);
+
+            &:hover {
+                background-color: #009EA1;
+            }
+            &:active {
+                background-color: #005758;
+            }
+        }
+    }
+
+    /* tweede article */
+    :nth-of-type(2){
+        img {
+            border: 4px solid #009EA1;
+        }
+    }
+
+}
+
+
+/* Deelnemende hogescholen */
+.participating-colleges {
+    margin: 5em 1em 0;
+
+    ul {
+        padding: 1em;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        overflow-x: scroll;
+        gap: 1em;
+    }
+
+    li{
+        img {
+            /* width: 15em; */
+            height: 5em;
+            width: auto;
+        }
+
+        :hover {
+            scale: 1.1;
+        }
+    }
+}
+
+
+/* Losse knop: Back to top */
+.button-to-top {
+    position: sticky;
+    bottom: 2%;
+    left: 90%;
+
+    color: rgb(255, 255, 255);
+    border-radius: 60%;
+    background-color:#7f0057a8;
+    padding: 6px 8px;
+    margin: 0.5em;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+/* Footer met dagelijks bestuur en platform ad informatie*/
+footer {
+    background-color: #009EA1;
+    margin-top: 1em;
+    padding-top: 1em;
+    text-align: center;
+
+    @media (min-width: 700px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 5em;
+    }
+    
+
+    h2 {
+        text-align: left;
+        color: #ffffff;
+        margin: 0 0 0.5em 0;
+    }
+    
+    .board-members {
+        display: grid;
+        padding: 1.5em;
+        text-align: left;
+
+        @media (min-width: 700px) {
+            justify-content: center;
+        }
+    }
+
+    .platform-ad {
+        padding: 1.5em;
+        text-align: left;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+    }
+
+    a {
+        line-height: 1.5em;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: larger;
+
+        &:hover {
+            text-decoration: 2px underline;
+            text-underline-offset: 5px;
+            text-decoration-color: #ffffff;
+        }
+
+        &:active {
+            color: #7F0056;
+            text-decoration-color: #7F0056;
+        }
+    }
+
+    /* Logo Platform Ad */
+    svg {
+        margin-bottom: 2em;
+
+        @media (min-width: 700px) {
+            grid-row: 2;
+            grid-column: 1/-1;
+            margin: auto;
+        }
+    }
+
+    /* Copyright */
+    p{
+        background-color: #ffffff;
+        padding: 0.8em;
+        text-align: center;
+
+        @media (min-width: 700px) {
+            grid-row: 3;
+            grid-column: 1/-1;
+
+        }
+    
+    }
+}
+
+
+
+
