@@ -306,7 +306,7 @@ nav {
 .target-groups {
     margin: 5em 1em;
     padding: 1em;
-    background-color: #009EA1;
+    background-color: var(--hoofd-kleur);
     border-radius: 10px;
 
     @media (min-width: 700px) {
@@ -494,7 +494,7 @@ nav {
 
 /* Footer met dagelijks bestuur en platform ad informatie*/
 footer {
-    background-color: #009EA1;
+    background-color: var(--hoofd-kleur);
     margin-top: 1em;
     padding-top: 1em;
     text-align: center;
