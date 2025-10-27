@@ -10,12 +10,19 @@ html {
         scroll-behavior: smooth;
     }
 
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html:has(.is-open){
     /* Zorgt ervoor dat je niet kan scrollen als het hamburger menu open is */
     overflow: hidden;
+}
+
+/* Huisstijl */
+:root {
+    --hoofd-kleur: #005F61;
+    --detail-kleur: #7F0056;
+    --active-kleur: #FFB3E6;
 }
 
 header {
@@ -76,7 +83,7 @@ nav {
         :hover {
             cursor: pointer;
             fill: #ffffff;
-            background-color: #009EA1;
+            background-color: var(--hoofd-kleur);
             padding: 0.2em;
             border-radius: 3px;
         }
@@ -98,7 +105,7 @@ nav {
         left:0;
         right:0;
 
-        background-color:#009EA1;
+        background-color:var(--hoofd-kleur);
 
 
         margin:0;
@@ -140,7 +147,7 @@ nav {
             }
 
             &:active {
-                color: #7F0056;
+                color:var(--active-kleur);
             }
 
         }
@@ -169,7 +176,7 @@ nav {
 
                 @media (min-width: 700px){
                     position: absolute;
-                    background-color: #009EA1;
+                    background-color: var(--hoofd-kleur);
                     padding:1em;
                     min-width: 22em;
                 }
@@ -212,8 +219,8 @@ nav {
 .top-picture {
     display: flex;
     width: 100%;
-    border-top: 25px solid #009EA1;
-    border-bottom: 5px solid #009EA1;
+    border-top: 25px solid var(--hoofd-kleur);
+    border-bottom: 5px solid var(--hoofd-kleur);
 
     @media (min-width: 700px) {
         margin: auto;
@@ -238,7 +245,7 @@ nav {
     text-align: center;
 
     @media (min-width: 700px) {
-        border-top: 5px solid #009EA1;
+        border-top: 5px solid var(--hoofd-kleur);
     }
 
     h1 {
@@ -278,17 +285,18 @@ nav {
 
         text-decoration: none;
         color: #ffffff;
-        background-color: #7F0056;
+        background-color: var(--detail-kleur);
         padding: 0.5em 1em;
         border-radius: 50px;
         border: 2px solid white;
         box-shadow: 3px 2px 5px rgba(60, 60, 60, 0.592);
 
         &:hover {
-            background-color: #009EA1;
+            background-color: var(--hoofd-kleur);
         }
         &:active {
-            background-color: #005758;
+            color: var(--active-kleur);
+            background-color: var(--hoofd-kleur);
         }
     }
 }
@@ -381,7 +389,7 @@ nav {
     }
 
     article {
-        background-color:#009EA1;
+        background-color:var(--hoofd-kleur);
         margin-bottom: 2em;
         padding-bottom: 1.5em;
         text-align: center;
@@ -411,17 +419,18 @@ nav {
         a {
             text-decoration: none;
             color: #ffffff;
-            background-color: #7F0056;
+            background-color: var(--detail-kleur);
             padding: 0.5em 1em;
             border-radius: 50px;
             border: 2px solid white;
             box-shadow: 3px 2px 5px rgba(60, 60, 60, 0.592);
 
             &:hover {
-                background-color: #009EA1;
+                background-color: var(--hoofd-kleur);
             }
             &:active {
-                background-color: #005758;
+                color: var(--active-kleur);
+                background-color: var(--hoofd-kleur);
             }
         }
     }
@@ -429,7 +438,7 @@ nav {
     /* tweede article */
     :nth-of-type(2){
         img {
-            border: 4px solid #009EA1;
+            border: 4px solid var(--hoofd-kleur);
         }
     }
 
@@ -467,16 +476,20 @@ nav {
 /* Losse knop: Back to top */
 .button-to-top {
     position: sticky;
-    bottom: 2%;
+    bottom: 6%;
     left: 90%;
 
     color: rgb(255, 255, 255);
     border-radius: 60%;
     background-color:#7f0057a8;
-    padding: 6px 8px;
+    padding: 6px 10px;
     margin: 0.5em;
     text-decoration: none;
     font-size: 1.5em;
+
+    &:hover {
+        background-color: var(--detail-kleur);
+    }
 }
 
 /* Footer met dagelijks bestuur en platform ad informatie*/
@@ -534,8 +547,8 @@ footer {
         }
 
         &:active {
-            color: #7F0056;
-            text-decoration-color: #7F0056;
+            color: var(--active-kleur);
+            text-decoration-color: var(--active-kleur);
         }
     }
 
