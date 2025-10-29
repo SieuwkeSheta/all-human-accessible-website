@@ -58,8 +58,7 @@ nav {
     padding: 0.5em 1em;
     background-color: #ffffff;
     z-index: 10;
-    overflow: hidden;
-
+    
     @media (min-width: 700px){
         display: grid;
         grid-template-columns: 1fr 1fr;
