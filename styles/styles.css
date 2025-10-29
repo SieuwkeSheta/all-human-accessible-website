@@ -55,6 +55,7 @@ p {
 nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0.5em 1em;
     background-color: #ffffff;
     z-index: 10;
@@ -65,10 +66,34 @@ nav {
         padding: 0;
     }
 
-    .logo, .search {
+    .logo {
+
         @media (min-width: 700px) {
-            margin: 0.5em 2em;
-            width: 2.5em;
+            margin: 1em 2em;
+            width: fit-content;
+        }
+            
+        svg {
+
+            @media (min-width: 600px) {
+                width: 14em;
+            }
+
+            @media (min-width: 700px) {
+                width: 10em;
+            }
+        }
+        
+    }
+
+    .search {
+        margin: 1em 2em;
+
+        svg {
+
+            @media (min-width: 700px) {
+                width: 3em;
+            }
         }
     }
 
@@ -78,9 +103,21 @@ nav {
 
         svg {
             width: 3em;
+
+            @media (min-width: 600px) {
+                width: 4em;
+            } 
         }
 
         :hover {
+            cursor: pointer;
+            fill: #ffffff;
+            background-color: var(--hoofd-kleur);
+            padding: 0.2em;
+            border-radius: 3px;
+        }
+
+        :active {
             cursor: pointer;
             fill: #ffffff;
             background-color: var(--hoofd-kleur);
@@ -92,7 +129,7 @@ nav {
     /* Zorgt dat de knoppen rechts uitlijnen */
     button:first-of-type{
         margin-left: auto;
-
+        
         @media (min-width: 700px){
             grid-row: 0/ 1;
         }
@@ -106,12 +143,10 @@ nav {
         right:0;
 
         background-color:var(--hoofd-kleur);
-
-
-        margin:0;
-        padding:1.5em;
+        margin: 0;
+        padding: 1.5em;
         /* Lijst in hamburger menu is niet zichtbaar */
-        translate: 200%;
+        translate: -100%;
         transition: 0.25s;
 
         &.is-open {
@@ -119,13 +154,14 @@ nav {
             translate: 0;
         }
 
-        @media (min-width: 700px){
+        @media (min-width: 700px) {
             grid-column: 1/-1;
             display: flex;
             justify-content: space-evenly;
             position: static;
             translate: 0;
             padding: 0.5em;
+            margin: 0;
         }
 
         li, a{
@@ -135,12 +171,26 @@ nav {
             line-height: 1.7em;
             font-size: large;
 
-            @media (min-width: 700px){
+            @media (min-width: 600px) {
+                font-size: larger;
+            }
+
+            @media (min-width: 700px) {
                 font-size: medium;
             }
+
+            @media (min-width: 900px) {
+                font-size: 1.1em;
+            }
+
+            @media (min-width: 1400px) {
+                font-size: 1.2em;
+            }
+
         }
 
         a {
+
             &:hover {
                 text-decoration: 2px underline;
                 text-underline-offset: 5px;
@@ -156,11 +206,26 @@ nav {
         /* Drop-down menu */
         .drop-down summary {
             cursor: pointer;
+            
+            @media (min-width: 600px) {
+                font-size: larger;
+            }
+
+            @media (min-width: 700px) {
+                font-size: medium;
+            }
+
+            @media (min-width: 900px) {
+                font-size: 1.1em;
+            }
+            
+            @media (min-width: 1400px) {
+                font-size: 1.2em;
+            }
 
             &:hover {
                 text-decoration: 2px underline;
                 text-underline-offset: 5px;
-
             }
 
             /* Driehoek voor tekst */
@@ -174,7 +239,7 @@ nav {
         .drop-down[open]::details-content{
                 padding-left: 1em;
 
-                @media (min-width: 700px){
+                @media (min-width: 700px) {
                     position: absolute;
                     background-color: var(--hoofd-kleur);
                     padding:1em;
@@ -193,8 +258,14 @@ nav {
         @media (min-width: 700px) {
             display: none;
         }
-    }
-    
+
+        &.is-open svg {
+            fill: #ffffff;
+            background-color: var(--hoofd-kleur);
+            padding: 0.2em;
+            border-radius: 3px;
+        }
+    } 
 }
 
 
@@ -227,6 +298,14 @@ nav {
         border: none;
         width: 70%;
     }
+
+    @media (min-width: 900px) {
+        width: 60%;
+    }
+
+    @media (min-width: 1200px) {
+        width: 50%;
+    }
 }
 
 
@@ -243,19 +322,34 @@ nav {
     color: #ffffff;
     padding: 1em;
     text-align: center;
-
+    
     @media (min-width: 700px) {
-        border-top: 5px solid var(--hoofd-kleur);
+        border-top: 7px solid var(--hoofd-kleur);
     }
 
     h1 {
         margin: 0;
         padding: 1em 0 0.2em;
+
+        @media (min-width: 900px) {
+            font-size: 3.5em;
+        }
     }
 
     h2 {
         margin: 0;
         padding: 2.5em 0 0.2em;
+
+        @media (min-width: 600px) {
+            font-size: 1.7em;
+        }
+    }
+
+    p {
+        @media (min-width: 600px) {
+            font-size: large;
+        }
+
     }
 
     ul {
@@ -269,6 +363,10 @@ nav {
         margin: 0 0 0.3em;
         padding: 0 0 1em;
         list-style: none;
+
+        @media (min-width: 600px) {
+            font-size: 1.2em;
+        }
     }
 
     svg {
@@ -291,9 +389,14 @@ nav {
         border: 2px solid white;
         box-shadow: 3px 2px 5px rgba(60, 60, 60, 0.592);
 
+        @media (min-width: 600px) {
+            font-size: larger;
+        }
+
         &:hover {
             background-color: var(--hoofd-kleur);
         }
+
         &:active {
             color: var(--active-kleur);
             background-color: var(--hoofd-kleur);
@@ -309,19 +412,30 @@ nav {
     background-color: var(--hoofd-kleur);
     border-radius: 10px;
 
-    @media (min-width: 700px) {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            margin: 5em 4em
-        }
+    @media (min-width: 600px) {
+        margin: 5em 3em;
+    }
+
+    @media (min-width: 750px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: 900px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 
     h2 {
         margin: 0;
         color: #ffffff;
         margin-bottom: 0.5em;
 
-        @media (min-width:700px) {
+        @media (min-width:750px) {
             grid-column: 1/-1;
+        }
+
+        @media (min-width: 600px) {
+            font-size: 1.7em;
         }
     }
 
@@ -337,11 +451,23 @@ nav {
         @media (min-width: 700px) {
             border-left: 1px solid grey;
         }
+        
+        @media (min-width: 900px) {
+            display: grid;
+            justify-content: center;
+            text-align: center;
 
+            padding: 1em;
+        }
     }
     
     svg {
         width: 2.5em;
+
+        @media (min-width: 900px) {
+            width: 4em;
+            margin: auto;
+        }
     }
 }
 
@@ -350,11 +476,19 @@ nav {
 .latest-news {
     margin: 1.5em;
 
+    @media (min-width: 500px) {
+        margin: 2em;
+    }
+
     @media (min-width: 700px) {
-        margin: 4em;
+        margin: 3em;
     }
     
     h2 {
+
+        @media (min-width: 600px) {
+            font-size: 1.7em;
+        }
 
         svg {
             height: 0.6em;
@@ -371,6 +505,7 @@ nav {
                 text-decoration-color:#7F0056;
                 padding: 0.4em;
             }
+            
             &:active {
                 color: #7F0056;
             }
@@ -384,7 +519,13 @@ nav {
         @media (min-width: 700px) {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1em;
+            grid-auto-rows: max-content;
+            gap: 3em;
+        }
+
+        @media (min-width: 1000px) {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2em;
         }
     }
 
@@ -397,9 +538,10 @@ nav {
 
         color: #ffffff;
         fill: #ffffff;
+        height: 100%;
 
         @media (min-width: 700px) {
-            min-height: 21em;
+            padding-bottom: 0;
         }
 
         img {
@@ -407,12 +549,33 @@ nav {
             border-radius: 10px 10px 0 0;
         }
 
-        h3, p {
+        h3 {
             padding: 0 2em;
+
+            @media (min-width: 900px) {
+                padding: 0 3em;
+            }
+
+            @media (min-width: 1000px) {
+                padding: 0 2em;
+                font-size: medium;
+            }
+
+            @media (min-width: 1100px) {
+                font-size: large;
+            }
         }
 
         p {
-            padding-bottom: 2em;
+            padding: 0 2em 2em;
+
+            @media (min-width: 1000px) {
+                font-size: small;
+            }
+
+            @media (min-width: 1100px) {
+                font-size: medium;
+            }
         }
 
         /* 'Lees meer'-knoppen */
@@ -428,6 +591,7 @@ nav {
             &:hover {
                 background-color: var(--hoofd-kleur);
             }
+
             &:active {
                 color: var(--active-kleur);
                 background-color: var(--hoofd-kleur);
@@ -440,6 +604,18 @@ nav {
         img {
             border: 4px solid var(--hoofd-kleur);
         }
+
+        h3 {
+
+            @media (min-width: 700px) {
+                padding-top: 2em;
+            }
+
+            @media (min-width: 1200px) {
+                padding-top: 3em;
+            }
+
+        }
     }
 
 }
@@ -447,7 +623,17 @@ nav {
 
 /* Deelnemende hogescholen */
 .participating-colleges {
-    margin: 5em 1em 0;
+    margin: 4em 1em 2em;
+
+    @media (min-width: 600px) {
+         margin: 4em 3em 2em;
+    }
+
+    h2 {
+        @media (min-width: 600px) {
+            font-size: 1.7em;
+        }
+    }
 
     ul {
         padding: 1em;
@@ -459,11 +645,14 @@ nav {
         gap: 1em;
     }
 
-    li{
+    li {
         img {
-            /* width: 15em; */
             height: 5em;
             width: auto;
+
+            @media (min-width:700px) {
+                height: 6em;
+            }
         }
 
         :hover {
@@ -476,8 +665,8 @@ nav {
 /* Losse knop: Back to top */
 .button-to-top {
     position: sticky;
-    bottom: 6%;
-    left: 90%;
+    bottom: 10%;
+    left: 95%;
 
     color: rgb(255, 255, 255);
     border-radius: 60%;
@@ -487,7 +676,15 @@ nav {
     text-decoration: none;
     font-size: 1.5em;
 
+    @media (min-width: 500px) {
+        font-size: 2em;
+    }
+
     &:hover {
+        background-color: var(--detail-kleur);
+    }
+
+    &:active {
         background-color: var(--detail-kleur);
     }
 }
@@ -572,9 +769,7 @@ footer {
         @media (min-width: 700px) {
             grid-row: 3;
             grid-column: 1/-1;
-
         }
-    
     }
 }
 
